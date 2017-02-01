@@ -48,12 +48,21 @@ function dashboard(id, fData){
     var barColor = 'steelblue';
     function segColor(c){ 
         return {
-            HTML:"#807dba", 
-            Javascript:"#e08214",
-            Java:"#41ab5d"}[c]; 
+            HTML:"#808dba", 
+            Javascript:"#e00214",
+            Java:"#41ab5d",
+            C:"#ffce00",CSS:"ff1620",J2EE:"#4dff5d",
+			PHP:"#2659FF",
+			AJAX:"#5099FF",
+			Responsive:"#7299FF",
+			UML:"#FF99FF",
+			JOOMLA:"#3422FF",
+			Wordpress:"#6055FF",
+			Drupal:"#FF10FF",
+			SPIP:"#FF59FF"}[c]; 
         }
     
-    // compute total for each state.
+   // compute total for each state.
     fData.forEach(function(d){
         d.total =   d.freq.HTML
                     +d.freq.Javascript
@@ -256,9 +265,27 @@ function dashboard(id, fData){
     var tF = [
         'HTML',
         'Javascript',
-        'Java'].map(function(d){ 
+        'Java',
+		'C',
+		'J2EE',
+		'Anglais',
+		'SQL',
+		'Web Design',
+		'Javascript',
+		'HTML',
+		'CSS',
+		'PHP',
+		'AJAX',
+		'Responsive',
+		'UML',
+		'JOOMLA',
+		'Wordpress',
+		'Drupal',
+		'SPIP'
+		].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
     });    
+     
     
     // calculate total frequency by state for all segment.
     var sF = fData.map(function(d){return [d.State,d.total];});
@@ -297,7 +324,19 @@ d3.csv(url, null, function(error, data) {
 			,freq:{
                 HTML:comp[d["Vos compétences [HTML]"]], 
                 Javascript:comp[d["Vos compétences [Javascript]"]], 
-                Java:comp[d["Vos compétences [Java]"]]}
+                Java:comp[d["Vos compétences [Java]"]],
+                C:comp[d["Vos compétences [C]"]],
+                CSS:comp[d["Vos compétences [CSS]"]],
+				J2EE:comp[d["Vos compétences [J2EE]"]],
+
+                PHP:comp[d["Vos compétences [PHP]"]],
+				AJAX:comp[d["Vos compétences [AJAX]"]],
+				Responsive:comp[d["Vos compétences [Responsive]"]],
+				UML:comp[d["Vos compétences [UML]"]],
+				JOOMLA:comp[d["Vos compétences [JOOMLA]"]],
+				Wordpress:comp[d["Vos compétences [Wordpress]"]],
+				Drupal:comp[d["Vos compétences [Drupal]"]],
+				SPIP:comp[d["Vos compétences [SPIP]"]],}
 		};
 		d.state = d["Nom"].substring(0,1).toUpperCase()+" "+d["Prénom"].substring(0,1).toUpperCase();
 		freqData.push(args);		
