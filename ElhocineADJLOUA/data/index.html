@@ -49,10 +49,19 @@ function dashboard(id, fData){
     function segColor(c){ 
         return {
             HTML:"#807dba",
-			AJAX:"#5d5",
+			AJAX:"#fd5",
 			SQL:"#45d",
+			J2EE:"#277f11",
+			Anglais:"#ff1111",
+			CSS:"#aaaaf1",
+			PHP:"#ff779a",
+			UML:"#ff11a1",
+			Drupal:"#1549ff",
+			JOOMLA:"#ff22ff",
+			SPIP:"#fff411",
+			Wordpress:"#4ffa49",
 			C:"#2ff",
-            Javascript:"#e08214",
+			Javascript:"#f08214",
             Java:"#41ab5d"}[c]; 
         }
     
@@ -257,10 +266,19 @@ function dashboard(id, fData){
     
     // calculate total frequency by segment for all state.
     var tF = [
-        'HTML',
+		'HTML',
 		'AJAX',
 		'SQL',
-		'C',
+		'J2EE',
+		'Anglais',
+		'CSS',
+		'PHP',
+		'UML',
+		'Drupal',
+		'SPIP',
+		'JOOMLA',
+		'Wordpress',
+		'C',    
         'Javascript',
         'Java'].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
@@ -301,11 +319,20 @@ d3.csv(url, null, function(error, data) {
 		var args = {
 			State:d["Nom"].substring(0,1).toUpperCase()+" "+d["Prénom"].substring(0,1).toUpperCase()
 			,freq:{
-                HTML:comp[d["Vos compétences [HTML]"]],
+ 				HTML:comp[d["Vos compétences [HTML]"]],
 				AJAX:comp[d["Vos compétences [AJAX]"]],
 				SQL:comp[d["Vos compétences [SQL]"]],
+				J2EE:comp[d["Vos compétences [J2EE]"]],
+				Anglais:comp[d["Vos compétences [Anglais]"]],	
+				CSS:comp[d["Vos compétences [CSS]"]],
+				PHP:comp[d["Vos compétences [PHP]"]],
+				UML:comp[d["Vos compétences [UML]"]],
+				Drupal:comp[d["Vos compétences [Drupal]"]],
+				SPIP:comp[d["Vos compétences [SPIP]"]],
+				JOOMLA:comp[d["Vos compétences [JOOMLA]"]],
+				Wordpress:comp[d["Vos compétences [Wordpress]"]],
 				C:comp[d["Vos compétences [C]"]],
-                Javascript:comp[d["Vos compétences [Javascript]"]], 
+				Javascript:comp[d["Vos compétences [Javascript]"]], 
                 Java:comp[d["Vos compétences [Java]"]]}
 		};
 		d.state = d["Nom"].substring(0,1).toUpperCase()+" "+d["Prénom"].substring(0,1).toUpperCase();

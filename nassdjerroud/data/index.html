@@ -48,9 +48,9 @@ function dashboard(id, fData){
     var barColor = 'steelblue';
     function segColor(c){ 
         return {
-            HTML:"#807dba", 
+            HTML:"#41ab5d", 
             Javascript:"#e08214",
-            Java:"#41ab5d",
+            Java:"#807dba",
 			C:"#32ab8d",
 			J2EE:"#326b5d",
 			Anglais:"#FF99FF",
@@ -323,7 +323,7 @@ var url = "../php/lecteurFlux.php?url=OCI1617data";
 d3.csv(url, null, function(error, data) {
 	freqData = [];
 	dataEtu = data;
-	var comp = {"j'men sors":12,"trop fort":16,"fort":15,"boffff":8,"pas très bon":10,"connais pas":2,"expert":18};
+	var comp = {"":0,"j'men sors":12,"trop fort":16,"fort":15,"boffff":8,"pas très bon":10,"connais pas":2,"expert":18};
 	data.forEach(function(d){
 		var args = {
 			State:d["Nom"].substring(0,1).toUpperCase()+" "+d["Prénom"].substring(0,1).toUpperCase()

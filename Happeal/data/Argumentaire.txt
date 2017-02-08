@@ -1,0 +1,7 @@
+La raison pour laquelle j'ai choisis ce graphique est qu'il représente au mieux le type de données c'est a dire :
+
+-En Y on peut placer la force de la connaissance 0% -> 100%
+-En X on peu placer le nom de la connaissance 
+
+et chaque couleur representera un élève ainsi nous pourront sans avoir changer de compétences voir une comparaison
+des élèves dans chaque compétence et aussi faire une moyenne approximative du niveau de la classe grâve au visuel de la courbe.

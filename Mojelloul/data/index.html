@@ -51,7 +51,17 @@ function dashboard(id, fData){
             HTML:"#807dba", 
             Javascript:"#e08214",
             Java:"#41ab5d",
-            C:"#ffce00",CSS:"ff0000",J2EE:"#4dff4d"
+            C:"#ffce00",CSS:"ff0000",
+            J2EE:"#4dff4d",
+            Anglais:"#ffbf80",
+            PHP:"#4dffa6",
+            AJAX:"#ff4d4d",
+            Responsive:"#663300",
+            UML:"#FF99FF",
+            JOOMLA:"#ccccff",
+            Wordpress:"#4dffff",
+            Drupal:"#FF00FF",
+            SPIP:"#FF55FF"
         }[c]; 
         }
     
@@ -59,7 +69,7 @@ function dashboard(id, fData){
     fData.forEach(function(d){
         d.total =   d.freq.HTML
                     +d.freq.Javascript
-                    +d.freq.Java+d.freq.C+d.freq.CSS+d.freq.J2EE;}
+                    +d.freq.Java+d.freq.C+d.freq.CSS+d.freq.J2EE+d.freq.Anglais+d.freq.PHP+d.freq.AJAX+d.freq.Responsive+d.freq.UML+d.freq.JOOMLA+d.freq.Wordpress+d.freq.Drupal+d.freq.SPIP;}
                     );
     
     // function to handle histogram.
@@ -258,7 +268,19 @@ function dashboard(id, fData){
     var tF = [
         'HTML',
         'Javascript',
-        'Java','C','CSS','J2EE'].map(function(d){ 
+        'Java',
+        'C',
+        'CSS',
+        'J2EE',
+        'Anglais',
+        'PHP',
+        'AJAX',
+        'Responsive',
+        'UML',
+        'JOOMLA',
+        'Wordpress',
+        'Drupal',
+        'SPIP'].map(function(d){ 
         return {type:d, freq: d3.sum(fData.map(function(t){ return t.freq[d];}))}; 
     });    
     
@@ -302,7 +324,16 @@ d3.csv(url, null, function(error, data) {
                 Java:comp[d["Vos compétences [Java]"]],
                 C:comp[d["Vos compétences [C]"]],
                 CSS:comp[d["Vos compétences [CSS]"]],
-                J2EE:comp[d["Vos compétences [J2EE]"]]}
+                J2EE:comp[d["Vos compétences [J2EE]"]],
+                Anglais:comp[d["Vos compétences [Anglais]"]],
+                PHP:comp[d["Vos compétences [PHP]"]],
+                AJAX:comp[d["Vos compétences [AJAX]"]],
+                Responsive:comp[d["Vos compétences [Responsive]"]],
+                UML:comp[d["Vos compétences [UML]"]],
+                JOOMLA:comp[d["Vos compétences [JOOMLA]"]],
+                Wordpress:comp[d["Vos compétences [Wordpress]"]],
+                Drupal:comp[d["Vos compétences [Drupal]"]],
+                SPIP:comp[d["Vos compétences [SPIP]"]]}
 		};
 		d.state = d["Nom"].substring(0,1).toUpperCase()+" "+d["Prénom"].substring(0,1).toUpperCase();
 		freqData.push(args);		

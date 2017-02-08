@@ -1,0 +1,5 @@
+J’ai choisi ce graphe parce qu’il représente parfaitement le type de donnée dont on dispose :
+
+-X : Nom de l’élève
+-Y : Note Connaissance
+-Couleur : Compétence
