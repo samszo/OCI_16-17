@@ -1,0 +1,92 @@
+<html>
+<div id="chartContainer">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+  <script type="text/javascript">
+    //définition du div qui reçoit le graph
+    var w = screen.width, h = screen.height
+  	var svg = dimple.newSvg("#chartContainer", w, h);
+    //récupère les données du formulaire étudiant
+    d3.csv("../php/lecteurFlux.php?url=OCI1617data", function (data) {
+    	  //reformate les données
+	  var dataR = reformate(data);	    	
+    	
+      //création du graphique dans le div avec les data
+    	  var myChart = new dimple.chart(svg, dataR);
+      //définition de l'emplacement et de la taille du grpahique
+      myChart.setBounds(65, 50, 505, 330)
+      //définition des catégories X
+      myChart.addCategoryAxis("x", ["Competence"]);
+      //définition des axes 
+      myChart.addMeasureAxis("y", "Valeur");
+      myChart.addMeasureAxis("p", "Valeur");
+      //définition des séries 
+      var pies = myChart.addSeries("Etu", dimple.plot.pie);
+      //taille du camembert
+      pies.radius = 20;
+      //ajoute la légende
+      myChart.addLegend(170, 10, 410, 20, "right");
+      //calcule le graphique
+      myChart.draw();
+    });
+    
+    function reformate(dt){
+
+		var comp = {"j'men sors":12,"trop fort":16,"fort":15,"boffff":8,"pas très bon":10,"connais pas":2,"expert":18};
+		var freqData = [];
+    	  	dt.forEach(function(d){
+    	    var args = {
+    	      State:d["Nom"]+" "+d["Prénom"]
+    	      ,freq:{
+    	                HTML:comp[d["Vos compétences [HTML]"]], 
+    	                Javascript:comp[d["Vos compétences [Javascript]"]], 
+    	                Java:comp[d["Vos compétences [Java]"]],
+    	                C:comp[d["Vos compétences [C]"]],
+    	                J2EE:comp[d["Vos compétences [J2EE]"]],
+    	                Anglais:comp[d["Vos compétences [Anglais]"]],
+    	                SQL:comp[d["Vos compétences [SQL]"]],
+    	                PHP:comp[d["Vos compétences [PHP]"]],
+    	                AJAX:comp[d["Vos compétences [AJAX]"]],
+    	                Responsive:comp[d["Vos compétences [Responsive]"]],
+    	                UML:comp[d["Vos compétences [UML]"]],
+    	                JOOMLA:comp[d["Vos compétences [JOOMLA]"]],
+    	                Wordpress:comp[d["Vos compétences [Wordpress]"]],
+    	                Drupal:comp[d["Vos compétences [Drupal]"]],
+    	                SPIP:comp[d["Vos compétences [SPIP]"]]}
+	    	    };
+	    	    d.state = d["Nom"]+" "+d["Prénom"];
+	    	    freqData.push(args);    
+    		});
+
+		var comp = [{
+   	        "Comp":'[HTML]'},
+   	        {"Comp":'[Javascript]'},
+   	        {"Comp":'[Java]'},
+   	        {"Comp":'[C]'},
+   	        {"Comp":'[J2EE]'},
+   	        {"Comp":'[Anglais]'},
+   	        {"Comp":'[SQL]'},
+   	        {"Comp":'[CSS]'},
+   	        {"Comp":'[PHP]'},
+   	        {"Comp":'[AJAX]'},
+   	        {"Comp":'[Responsive]'},
+   	        {"Comp":'[UML]'},
+   	        {"Comp":'[JOOMLA]'},
+   	        {"Comp":'[Wordpress]'},
+   	        {"Comp":'[Drupal]'},
+   	        {"Comp":'[SPIP]'}];
+
+    	  var data = [];
+    	  freqData.forEach(function (d) {
+    	       console.log(d);
+    	       for (var name in d.freq) {
+    	            data.push( { "Etu":d.State, "Competence":name, "Valeur":d.freq[name] } );
+    	            console.log(d.freq[name]);
+    	       }
+    	  });
+    	  return data;
+    }
+    
+  </script>
+</div>
+</html>
