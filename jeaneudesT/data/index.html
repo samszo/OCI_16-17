@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+
+<!- DU CSS !>
 <style>
 body{
     width:1060px;
@@ -34,19 +36,40 @@ rect:hover {  fill:blue; }
     align:right;
     width:50px;
 }
+#dashboard{
+    background-color:;
+}
 
 </style>
+
+<!- FIN DU CSS !>
+
+
 <body>
+<!-- Titre -->
 <h1>Les compétences des étudiants OCI 15 16</h1>
+
+<!-- Nom + Prenom étudiant -->
 <h2 id="sltEtu"></h2>
+
+<!-- Mail étudiant -->
 <p id="mailEtu"></p>
+
+<!-- BLOC du diagramme + fromage + liste des competences -->
 <div id='dashboard'>
 </div>
+
+<!-- Librairie -->
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
+
+
 function dashboard(id, fData){
+    //Couleur des bar 
     var barColor = 'steelblue';
-    function segColor(c){ 
+
+        //Couleur pour la competence
+        function segColor(c){ 
         return {
             HTML:"#807dba", 
             Javascript:"#e08214",
@@ -56,8 +79,6 @@ function dashboard(id, fData){
 			Anglais:"#FF99FF",
 			SQL:"#F599FF",
 			Web_Design:"#F20FF",
-			Javascript:"#F619FF",
-			HTML:"#0199FF",
 			CSS:"#2229d5",
 			PHP:"#3659FF",
 			AJAX:"#4099FF",
@@ -68,13 +89,33 @@ function dashboard(id, fData){
 			Drupal:"#FF00FF",
 			SPIP:"#FF55FF"}[c]; 
         }
+
     
     // compute total for each state.
-    fData.forEach(function(d){
-        d.total =   d.freq.HTML
-                    +d.freq.Javascript
-                    +d.freq.Java;}
-                    );
+    fData.forEach(
+
+        function(d)
+        {
+            d.total =   d.freq.HTML
+                        +d.freq.Javascript
+                        +d.freq.Java
+                        +d.freq.C
+                        +d.freq.J2EE
+                        +d.freq.Anglais
+                     
+                        +d.freq.Web_Design
+                        +d.freq.CSS
+                        +d.freq.PHP
+                        +d.freq.AJAX
+                        +d.freq.Responsive
+                        +d.freq.UML
+                        +d.freq.JOOMLA
+                        +d.freq.Wordpress
+                        +d.freq.Drupal
+                        +d.freq.SPIP;
+        }
+
+                );
     
     // function to handle histogram.
     function histoGram(fD){
@@ -278,8 +319,6 @@ function dashboard(id, fData){
 		'Anglais',
 		'SQL',
 		'Web Design',
-		'Javascript',
-		'HTML',
 		'CSS',
 		'PHP',
 		'AJAX',
@@ -315,15 +354,14 @@ var freqData=[
 ,{State:'IN',freq:{low:797, mid:1849, high:1534}}
 ,{State:'KS',freq:{low:162, mid:379, high:471}}
 ];
-var dataEtu;
-//
-var url = "https://docs.google.com/spreadsheets/d/1ZQEgufeLE5I3WyJZ8_bmlVT6c9wRap4L4TAQ_7LRHQw/pub?gid=1596717779&single=true&output=csv";
+
+
 //var url = "../data/EtudiantsOCI16-17.csv";
 var url = "../php/lecteurFlux.php?url=OCI1617data";
 d3.csv(url, null, function(error, data) {
 	freqData = [];
 	dataEtu = data;
-	var comp = {"j'men sors":12,"trop fort":16,"fort":15,"boffff":8,"pas très bon":10,"connais pas":2,"expert":18};
+	var comp = {"j'men sors":12,"trop fort":16,"fort":15,"boffff":8,"pas très bon":10,"connais pas":2,"expert":18,"":0};
 	data.forEach(function(d){
 		var args = {
 			State:d["Nom"].substring(0,1).toUpperCase()+" "+d["Prénom"].substring(0,1).toUpperCase()
@@ -335,8 +373,6 @@ d3.csv(url, null, function(error, data) {
 				J2EE:comp[d["Vos compétences [J2EE]"]],
 				Anglais:comp[d["Vos compétences [Anglais]"]],
 				Web_Design:comp[d["Vos compétences [Web Design]"]],
-				Javascript:comp[d["Vos compétences [Javascript]"]],
-				HTML:comp[d["Vos compétences [HTML]"]],
 				CSS:comp[d["Vos compétences [CSS]"]],
 				PHP:comp[d["Vos compétences [PHP]"]],
 				AJAX:comp[d["Vos compétences [AJAX]"]],
@@ -347,6 +383,7 @@ d3.csv(url, null, function(error, data) {
 				Drupal:comp[d["Vos compétences [Drupal]"]],
 				SPIP:comp[d["Vos compétences [SPIP]"]],}
 		};
+
 		d.state = d["Nom"].substring(0,1).toUpperCase()+" "+d["Prénom"].substring(0,1).toUpperCase();
 		freqData.push(args);		
 	});
