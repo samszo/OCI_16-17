@@ -7,9 +7,9 @@
     d3.tsv("example_data.tsv", function (data) {
       var myChart = new dimple.chart(svg, data);
       myChart.setBounds(60, 30, 510, 305)
-      var x = myChart.addCategoryAxis("x", "Month");
+      var x = myChart.addCategoryAxis("x", "matiere");
       x.addOrderRule("Date");
-      myChart.addMeasureAxis("y", "Unit Sales");
+      myChart.addMeasureAxis("y", "niveau");
       myChart.addSeries(null, dimple.plot.bar);
       myChart.draw();
     });
