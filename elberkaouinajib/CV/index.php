@@ -160,7 +160,6 @@
 						</div>
 					</div>
 				</div>
-
 				<br>
 				<br>
 				<!-- skill-section -->
