@@ -95,9 +95,7 @@
 										<h4>A propos</h4>
 										<div class="about-content">
 											<span class="active-color">Bonjour, je suis EL BERKAOUI Najib, Concepteur et Développeur.</span>
-											<p>Aenean nonummy hendrerit mauris. Donec sit Phasellus portFusce suscipit varius mium
-												sociis natoque penatibus et magnis dis parturent montes, nascetur ridiculus mus. Nulla
-												dui.Fusce feugiat malesuada odiMorbi nunc odio, gravida at, cursus nec, luctus.</p>
+											<p>Diplômé d’un DTS (Diplôme de technicien spécialisé) en développements informatique a l’ISTA BERKANE MAROC. Je continue actuellement ma formation à l’université Paris 8 en France, Branche OCI (Object communiquant intelligents). Très passionné d’informatique et de technologies High-Tech.</p>
 											<span class="border-dashed"></span>
 											<img src="img/signature.png" alt="">
 										</div>
@@ -162,7 +160,6 @@
 						</div>
 					</div>
 				</div>
-
 				<br>
 				<br>
 				<!-- skill-section -->
