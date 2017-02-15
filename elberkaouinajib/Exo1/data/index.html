@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<body>
+<div id="chartContainer">
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+    <script type="text/javascript">
+        var url = "https://docs.google.com/spreadsheets/d/1ZQEgufeLE5I3WyJZ8_bmlVT6c9wRap4L4TAQ_7LRHQw/pub?gid=1596717779&single=true&output=csv";
+        var url = "../php/lecteurFlux.php?url=OCI1617data";
+        var svg = dimple.newSvg("#chartContainer", 3000, 400);
+        d3.csv(url, function (data) {
+            data = dimple.filterData(data, "", "")
+            freqData = [];
+            dataEtu = data;
+            var comp = {"":0,"j'men sors":12,"trop fort":16,"fort":15,"boffff":8,"pas très bon":10,"connais pas":2,"expert":18};
+            data.forEach(function(d){
+                var args = {
+                    State:d["Nom"]+" "+d["Prénom"]
+                    ,freq:{
+                        HTML:comp[d["Vos compétences [HTML]"]],
+                        Javascript:comp[d["Vos compétences [Javascript]"]],
+                        Java:comp[d["Vos compétences [Java]"]],
+                        C:comp[d["Vos compétences [C]"]],
+                        J2EE:comp[d["Vos compétences [J2EE]"]],
+                        Anglais:comp[d["Vos compétences [Anglais]"]],
+                        SQL:comp[d["Vos compétences [SQL]"]],
+                        PHP:comp[d["Vos compétences [PHP]"]],
+                        AJAX:comp[d["Vos compétences [AJAX]"]],
+                        Responsive:comp[d["Vos compétences [Responsive]"]],
+                        UML:comp[d["Vos compétences [UML]"]],
+                        JOOMLA:comp[d["Vos compétences [JOOMLA]"]],
+                        Wordpress:comp[d["Vos compétences [Wordpress]"]],
+                        Drupal:comp[d["Vos compétences [Drupal]"]],
+                        SPIP:comp[d["Vos compétences [SPIP]"]]}
+                };
+                d.state = d["Nom"]+" "+d["Prénom"];
+                freqData.push(args);
+            });
+            var comp = [{
+                "Comp":'[HTML]'},
+                {"Comp":'[Javascript]'},
+                {"Comp":'[Java]'},
+                {"Comp":'[C]'},
+                {"Comp":'[J2EE]'},
+                {"Comp":'[Anglais]'},
+                {"Comp":'[SQL]'},
+                {"Comp":'[CSS]'},
+                {"Comp":'[PHP]'},
+                {"Comp":'[AJAX]'},
+                {"Comp":'[Responsive]'},
+                {"Comp":'[UML]'},
+                {"Comp":'[JOOMLA]'},
+                {"Comp":'[Wordpress]'},
+                {"Comp":'[Drupal]'},
+                {"Comp":'[SPIP]'}];
+
+            data = [  ];
+            freqData.forEach(function (d) {
+                console.log(d);
+
+                for (var name in d.freq) {
+                    data.push( { "Initial":d.State, "Competence":name, "Valeur":d.freq[name] } );
+                    console.log(d.freq[name]);
+                }
+
+            }, this);
+
+            var myChart = new dimple.chart(svg, data);
+
+            myChart.setBounds(60, 30, 1000, 305);
+
+            var x = myChart.addMeasureAxis("y", 'Valeur');
+
+            myChart.addCategoryAxis("x", "Competence");
+
+            myChart.addSeries("Initial", dimple.plot.bar);
+
+            myChart.addLegend(60, 10, 1000, 305, "right");
+            myChart.draw();
+        });
+    </script>
+</div>
+</body>
+</html>
