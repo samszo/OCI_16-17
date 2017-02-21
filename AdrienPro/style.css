@@ -1,0 +1,21 @@
+body{
+	color:gray;
+	border-width: 10px; 
+	border-style: double;
+	border-color: blue;
+	margin: 100px;
+	padding: 50px;
+	box-shadow: 20px 20px 25px black;
+}
+
+h1{
+	font-size: 60px; 
+	text-align: center;
+	color: red; 
+	
+}
+
+p{
+	font-size: 40px;
+}
+
