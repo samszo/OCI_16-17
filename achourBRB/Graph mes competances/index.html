@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </HEAD>
 <body>
-<h1>Graphique compétences des étudiants</h1>
+<h1>Graphe compétences des étudiants</h1>
 <h2 id="sltEtu"></h2>
 <p id="mailEtu"></p>
 <div id='dashboard'>
@@ -16,25 +16,25 @@ function dashboard(id, fData){
     var barColor = 'steelblue';
     function segColor(c){ 
         return {
-            HTML:"#abcr12", 
+            HTML:"#807dba", 
             Javascript:"#e08214",
-            Java:"#128849",
-			C:"#33ffff",
-			J2EE:"#99aaaa",
-			Anglais:"343111",
-			SQL:"#4ae433",
-			Web_Design:"#EEEDDD",
-			Javascript:"#EA2222",
+            Java:"#41ab5d",
+			C:"#ffffff",
+			J2EE:"#aaaaaa",
+			Anglais:"#111111",
+			SQL:"#444444",
+			Web_Design:"#DDDDDD",
+			Javascript:"#222222",
 			HTML:"#123456",
-			CSS:"#1809BB",
-			PHP:"#ae0011",
-			AJAX:"#BBBEEE",
-			Responsive:"#AAA222",
-			UML:"#1456DC",
+			CSS:"#BBBBBB",
+			PHP:"#000011",
+			AJAX:"#EEEEEE",
+			Responsive:"#222222",
+			UML:"#CCCCCC",
 			JOOMLA:"#444444",
-			Wordpress:"#111BBB",
-			Drupal:"#FF0700",
-			SPIP:"#BBB233"}[c]; 
+			Wordpress:"#BBBBBB",
+			Drupal:"#FF000000",
+			SPIP:"#112233"}[c]; 
         }
     
     // compute total for each state.
