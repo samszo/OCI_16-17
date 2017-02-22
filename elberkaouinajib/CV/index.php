@@ -73,7 +73,7 @@
 				</div>
 				<div class="hero-btn" one-page>
 					<a class="btn btn-default rex-primary-btn-effect-No" href="#contact" role="button"><span>Me Contacter</span></a>
-					<a class="btn btn-default rex-primary-btn-effect-No" href="CV_EL_BERKAOUI_Najib.doc" role="button">Telecharger CV</a>
+					<a class="btn btn-default rex-primary-btn-effect-No" href="CV_EL_BERKAOUI_Najib.pdf" role="button">Telecharger CV</a>
 				</div>
 			</div>
 		</div>
