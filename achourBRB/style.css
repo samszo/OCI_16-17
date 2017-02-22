@@ -1,0 +1,22 @@
+body{
+	color:red;
+	border-width: 10px; 
+	border-style: double;
+	border-color: grey;
+	margin: 80px;
+	padding: 50px;
+	box-shadow: 90px 95px 100px black;
+    background:url("img/pro.jpg"); 
+}
+
+h1{
+	font-size: 70px; 
+	text-align: center;
+	color: green; 
+	
+}
+
+p{
+	font-size: 40px;
+}
+
