@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<body>
+<div id="chartContainer">
+  <script src="http://d3js.org/d3.v4.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.3.0.min.js"></script>
+  <script type="text/javascript">
+   // var url= "https://docs.google.com/spreadsheets/d/1ZQEgufeLE5I3WyJZ8_bmlVT6c9wRap4L4TAQ_7LRHQw/pub?gid=1596717779&single=true&output=csv ";
+    var svg = dimple.newSvg("#chartContainer", 590, 400);
+    
+    d3.tsv("http://dimplejs.org/data/example_data.tsv", function (data) {
+	
+      data = dimple.filterData(data, "Owner", ["Aperture", "Black Mesa"])
+      var myChart = new dimple.chart(svg, data);
+      myChart.setBounds(65, 30, 505, 305);
+      var x = myChart.addCategoryAxis("x", "Month");
+      x.addOrderRule("Date");
+      myChart.addPctAxis("y", "Unit Sales");
+      var s = myChart.addSeries("Channel", dimple.plot.area);
+      s.interpolation = "step";
+      s.lineWeight = 1;
+      myChart.addLegend(60, 10, 500, 20, "right");
+      myChart.draw();
+    });
+  </script>
+</div>
+</body>
+</html>
