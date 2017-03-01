@@ -1,0 +1,18 @@
+body{
+	color:red;
+	margin: 80px;
+	padding: 50px;
+    background:url("img/font.jpg"); 
+}
+
+h1{
+	font-size: 60px; 
+	text-align: center;
+	color: white; 
+	
+}
+
+p{
+	font-size: 40px;
+}
+
